@@ -10,7 +10,7 @@
   This macro inserts or replaces text with the text from a
   single line column block.
 
-  For example, suppose tht you have a form letter and a
+  For example, suppose that you have a form letter and a
   list of names. To create a new letter, you want to mark
   the recipient's name and then replace the word recipient
   in the To heading with the marked text.
@@ -29,16 +29,16 @@
        step 3.
     Note: If instead of having the word recipient
     there is an empty space, click where you
-    want the name to start and the target will apear
+    want the name to start and the target will appear
     there.
 
   For the programmer, this is a handy macro for
   changing or adding a variable name.
 
-  Here are the opperations that can be performed.
+  Here are the operations that can be performed.
       Smart No Slide - Text to the right doesn't
                        slide to the left. It
-                       will slide coluns to the
+                       will slide columns to the
                        right to make room.
       Smart Slide    - Text to the right slides
                        to the left if smaller.
