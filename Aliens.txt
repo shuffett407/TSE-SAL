@@ -1,0 +1,6 @@
+ Aliens -- an animated video game
+      the original version is from
+      Fall 1979                       Cambridge               Jude Miller
+
+ This version of the game has been adapted for The SemWare Editor.
+ To find the original source code, search for SIMTEL ALIENS11.LBR 28K.
