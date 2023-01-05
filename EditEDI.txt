@@ -1,0 +1,5 @@
+EditEDI -- a macro for editing EDI files.
+
+Description: An ANSI X12 EDI interchange file contains plain text. Records are called segments. The segment delimiter can be any character. The first segment always contains 105 characters with the 106th character being the segment delimiter. The macro uses the segment delimiter to unwrap the segments putting each one on a separate line.
+
+Usage: Open the EDI file in binary mode with an arbitrary record length such as 999 and run the macro to unwrap the segments. Make changes being careful not to remove the segment delimiter and save the file.
