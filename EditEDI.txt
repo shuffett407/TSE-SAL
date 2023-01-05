@@ -1,5 +1,0 @@
-EditEDI -- a macro for editing EDI files.
-
-Description: An ANSI X12 EDI Interchange is saved as large plain text file. Use this macro to make changes. Usually the lines which are called segments will not end with a CR or LF. Instead, the first segment is always fixed length with the character in position 106 being the segment delimeter which is used throughout the remainder of the file.
-
-Usage: Open the file in binary mode with an arbitrary record length such as -b 999 and run this macro. Then, make your changes and save.
