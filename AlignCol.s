@@ -34,12 +34,15 @@ proc main()
 
         for i = 1 to row_count
             GotoLine(i)
-            MarkLine(i,i)
+            
+            if CurrChar(1) <> _AT_EOL_
+                MarkLine(i,i)
 
-            if lReplace("^.*\$","","xl1") // Remove text preceding next column
-                done_processing = False
-            else
-                lReplace("^.*$","","xl1") // Remove text to end of line
+                if lReplace("^.*\$","","xl1") // Remove text preceding next column
+                    done_processing = False
+                else
+                    lReplace("^.*$","","xl1") // Remove text to end of line
+                endif
             endif
         endfor
 
