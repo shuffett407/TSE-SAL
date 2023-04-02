@@ -14,12 +14,10 @@ proc mAlignCenter(var integer row_count, var integer col_width)
     for i = 1 to row_count
         GotoLine(i)
         BegLine()
-        hold = GetText(1,255)
-        hold = format("" : ((col_width - length(hold)) shr 1), hold)
-        lReplace("^.*$",hold,"x1")
+        hold = GetText(1, 255)
+        hold = Format("" : ((col_width - Length(hold)) shr 1), hold)
+        lReplace("^.*$", hold, "x1")
     endfor
-
-    col_width = LongestLineInBuffer()
 end
 
 proc mAlignRight(var integer row_count, var integer col_width)
@@ -29,12 +27,10 @@ proc mAlignRight(var integer row_count, var integer col_width)
     for i = 1 to row_count
         GotoLine(i)
         BegLine()
-        hold = GetText(1,255)
-        hold = format("" : col_width - length(hold), hold)
-        lReplace("^.*$",hold,"x1")
+        hold = GetText(1, 255)
+        hold = Format("" : col_width - Length(hold), hold)
+        lReplace("^.*$", hold, "x1")
     endfor
-
-    col_width = LongestLineInBuffer()
 end
 
 proc main()
@@ -52,14 +48,14 @@ proc main()
         GotoBufferId(work_file)
         EmptyBuffer()
         CopyBlock()
-        lReplace("\$.*$","$","gnx") // Removes text following first delimiter
-        lReplace("^ ","","gnx")     // Removes leading spaces
-        lReplace(" *\$$","","gnx")  // Removes trailing spaces
+        lReplace("\$.*$", "$", "gnx") // Removes text following first delimiter
+        lReplace("^ ", "", "gnx")     // Removes leading spaces
+        lReplace(" *\$$", "", "gnx")  // Removes trailing spaces
         col_width = LongestLineInBuffer()
         // Uncomment one of the following lines to change the alignment type. Default is left justified.
-        //   mAlignCenter(row_count,col_width)
-        //   mAlignRight(row_count,col_width)
-        MarkColumn(1,1,row_count,col_width + 1)
+        //   mAlignCenter(row_count, col_width)
+        //   mAlignRight(row_count, col_width)
+        MarkColumn(1, 1, row_count, col_width + 1)
         GotoBufferId(output_file)
         GotoColumn(output_col)
         MoveBlock()
@@ -71,12 +67,12 @@ proc main()
             GotoLine(i)
 
             if CurrChar(1) <> _AT_EOL_
-                MarkLine(i,i)
+                MarkLine(i, i)
 
-                if lReplace("^.*\$","","xl1") // Remove text preceding next column
+                if lReplace("^.*\$", "", "xl1") // Remove text preceding next column
                     done_processing = False
                 else
-                    lReplace("^.*$","","xl1") // Remove text to end of line
+                    lReplace("^.*$", "", "xl1") // Remove text to end of line
                 endif
             endif
         endfor
