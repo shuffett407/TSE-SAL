@@ -42,9 +42,9 @@ proc main()
     input_file = CreateTempBuffer()
     InsertData(text_data)
     row_count = NumLines()
-    MarkAll()
 
     repeat
+        MarkAll()
         GotoBufferId(work_file)
         EmptyBuffer()
         CopyBlock()
@@ -76,10 +76,6 @@ proc main()
                 endif
             endif
         endfor
-
-        if not done_processing
-            MarkAll()
-        endif
     until done_processing
 
     AbandonFile(input_file)
