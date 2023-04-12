@@ -34,11 +34,10 @@ proc mAlignRight(var integer row_count, var integer col_width)
 end
 
 proc main()
-    integer i, return_file, input_file, work_file, output_file, col_width, output_col, row_count, done_processing
+    integer i, return_file, input_file, work_file, output_file, col_width, row_count, done_processing
     return_file = GetBufferId() // Current file or line should be empty
     work_file = CreateTempBuffer()
     output_file = CreateTempBuffer()
-    output_col = 1
     input_file = CreateTempBuffer()
     InsertData(text_data)
     row_count = NumLines()
@@ -57,9 +56,8 @@ proc main()
         //   mAlignRight(row_count, col_width)
         MarkColumn(1, 1, row_count, col_width + 1)
         GotoBufferId(output_file)
-        GotoColumn(output_col)
+        GotoColumn(LongestLineInBuffer() + 1)
         MoveBlock()
-        output_col = LongestLineInBuffer() + 1
         GotoBufferId(input_file)
         done_processing = True
 
