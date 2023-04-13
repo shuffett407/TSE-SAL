@@ -56,8 +56,8 @@ proc main()
         //   mAlignRight(row_count, col_width)
         MarkColumn(1, 1, row_count, col_width + 1)
         GotoBufferId(output_file)
-        GotoColumn(LongestLineInBuffer() + 1)
         MoveBlock()
+        GotoColumn(CurrPos() + col_width + 1)
         GotoBufferId(input_file)
         done_processing = True
 
