@@ -9,27 +9,21 @@ end
 
 proc mAlignCenter(var integer row_count, var integer col_width)
     integer i
-    string hold[255]
 
     for i = 1 to row_count
         GotoLine(i)
-        BegLine()
-        hold = GetText(1, 255)
-        hold = Format("" : ((col_width - Length(hold)) shr 1), hold)
-        lReplace("^.*$", hold, "x1")
+        GotoPos(1)
+        InserTtext(Format("" : (col_width - CurrLineLen()) shr 1), _INSERT_)
     endfor
 end
 
 proc mAlignRight(var integer row_count, var integer col_width)
     integer i
-    string hold[255]
 
     for i = 1 to row_count
         GotoLine(i)
-        BegLine()
-        hold = GetText(1, 255)
-        hold = Format("" : col_width - Length(hold), hold)
-        lReplace("^.*$", hold, "x1")
+        GotoPos(1)
+        InserTtext(Format("" : col_width - CurrLineLen()), _INSERT_)
     endfor
 end
 
