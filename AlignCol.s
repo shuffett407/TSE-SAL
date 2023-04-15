@@ -13,7 +13,7 @@ proc mAlignCenter(var integer row_count, var integer col_width)
     for i = 1 to row_count
         GotoLine(i)
         GotoPos(1)
-        InserTtext(Format("" : (col_width - CurrLineLen()) shr 1), _INSERT_)
+        InsertText(Format("" : (col_width - CurrLineLen()) shr 1), _INSERT_)
     endfor
 end
 
@@ -23,7 +23,7 @@ proc mAlignRight(var integer row_count, var integer col_width)
     for i = 1 to row_count
         GotoLine(i)
         GotoPos(1)
-        InserTtext(Format("" : col_width - CurrLineLen()), _INSERT_)
+        InsertText(Format("" : col_width - CurrLineLen()), _INSERT_)
     endfor
 end
 
