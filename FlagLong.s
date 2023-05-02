@@ -39,10 +39,10 @@ proc mFlagLongLines()
     UpdateDisplay()
 
     if NumWindows() == 1
-        flag_pos  = Query(WindowCols)
+        flag_pos  = Query(WindowCols) + GetLineNumberLength()
         flag_line = 1
     else
-        flag_pos  = Query(WindowCols) + 1
+        flag_pos  = Query(WindowCols) + GetLineNumberLength() + 1
         flag_line = 0
     endif
 
