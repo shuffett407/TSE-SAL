@@ -7,24 +7,18 @@ DataDef text_data
     "justified,$right$justified,$or$center$justified$within$its$column."
 end
 
-proc mAlignCenter(var integer row_count, var integer col_width)
-    integer i
-
-    for i = 1 to row_count
-        GotoLine(i)
-        GotoPos(1)
+proc mAlignCenter(var integer col_width)
+    while lFind(".","x")
         InsertText(Format("" : (col_width - CurrLineLen()) shr 1), _INSERT_)
-    endfor
+        EndLine()
+    endwhile
 end
 
-proc mAlignRight(var integer row_count, var integer col_width)
-    integer i
-
-    for i = 1 to row_count
-        GotoLine(i)
-        GotoPos(1)
+proc mAlignRight(var integer col_width)
+    while lFind(".","x")
         InsertText(Format("" : col_width - CurrLineLen()), _INSERT_)
-    endfor
+        EndLine()
+    endwhile
 end
 
 proc main()
@@ -46,8 +40,8 @@ proc main()
         lReplace(" *\$$", "", "gnx")  // Removes trailing spaces
         col_width = LongestLineInBuffer()
         // Uncomment one of the following lines to change the alignment type. Default is left justified.
-        //   mAlignCenter(row_count, col_width)
-        //   mAlignRight(row_count, col_width)
+        //   mAlignCenter(col_width)
+        //   mAlignRight(col_width)
         MarkColumn(1, 1, row_count, col_width + 1)
         GotoBufferId(output_file)
         MoveBlock()
