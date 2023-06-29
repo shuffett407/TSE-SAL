@@ -22,7 +22,7 @@ proc mAlignRight(var integer col_width)
 end
 
 proc main()
-    integer i, return_file, input_file, work_file, output_file, col_width, row_count, done_processing
+    integer return_file, input_file, work_file, output_file, col_width, row_count, done_processing
     return_file = GetBufferId() // Current file or line should be empty
     work_file = CreateTempBuffer()
     output_file = CreateTempBuffer()
@@ -48,20 +48,17 @@ proc main()
         GotoColumn(CurrPos() + col_width + 1)
         GotoBufferId(input_file)
         done_processing = True
+        BegFile()
 
-        for i = 1 to row_count
-            GotoLine(i)
-
+        repeat
             if CurrChar(1) <> _AT_EOL_
-                MarkLine(i, i)
-
-                if lReplace("^.*\$", "", "xl1") // Remove text preceding next column
+                if lReplace("^.*\$", "", "cx1") // Remove text preceding next column
                     done_processing = False
                 else
-                    lReplace("^.*$", "", "xl1") // Remove text to end of line
+                    lReplace("^.*$", "", "x1") // Remove text to end of line
                 endif
             endif
-        endfor
+        until not Down()
     until done_processing
 
     AbandonFile(input_file)
