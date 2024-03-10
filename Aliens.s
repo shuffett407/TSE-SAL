@@ -811,7 +811,7 @@ proc bomb()
 			bmb_put_row(b,0)
 		else
 			setpos(bmb_get_row(b),bmb_get_col(b))
-			Putstr("")
+			Putstr("*")
 			setpos(bmb_get_row(b),bmb_get_col(b))
             PutAttr(14,1)
         endif
