@@ -1,0 +1,70 @@
+/*************************************************************************
+  TSE Pro for DOS compatibility patch
+
+  Author:     Christopher Shuffett
+
+  Date:       Apr 25, 2024  (CS) initial version
+
+  Overview:
+
+  These procs provide compatibility with TSE Pro for Windows
+
+*************************************************************************/
+
+proc CopyFile(string src, string dst)
+    integer overwrite = false
+    integer newempty = false
+
+    overwrite = GetGlobalInt("CopyFileOverwrite")
+
+    if overwrite
+        if FileExists(dst)
+            if EraseDiskFile(dst)
+                newempty = CreateBuffer(dst, _NORMAL_)
+            endif
+        endif
+    else
+        newempty = CreateBuffer(dst, _NORMAL_)
+    endif
+
+    if newempty
+        InsertFile(src)
+        SaveAndQuitFile()
+    endif
+
+    SetGlobalInt("CopyFile", newempty)
+    SetGlobalInt("CopyFileOverwrite", false)
+    Return()
+end
+
+proc LongestLineInBuffer()
+    integer LineLength = 0
+    PushPosition()
+    BegFile()
+
+    Loop
+        if LineLength < CurrLineLen()
+            LineLength = CurrLineLen()
+        endif
+
+        if Not Down()
+            break
+        endif
+    EndLoop
+
+    PopPosition()
+    SetGlobalInt("LongestLineInBuffer", LineLength)
+
+    Return()
+end
+
+proc MarkAll()
+    PushPosition()
+    EndFile()
+    BegLine()
+    MarkToEOL()
+    BegFile()
+    MarkStream()
+    PopPosition()
+    Return()
+end
